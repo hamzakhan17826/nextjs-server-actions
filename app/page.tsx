@@ -1,10 +1,11 @@
-import ListCities from "./components/ListCities";
+import ListCities from "./cities/page";
+import RegisterPage from "./register/page";
 
 export default function Home() {
   return (
     <div>
       <ListCities />
-      <div>/Account/Register</div>
+      <RegisterPage />
     </div>
   );
 }

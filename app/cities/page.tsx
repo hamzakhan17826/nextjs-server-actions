@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { getCities } from "./actions";
 
 const ListCities = () => {
   type City = {
@@ -14,8 +15,7 @@ const ListCities = () => {
   const countryId = 1;
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`/api/cities?id=${id}&countryId=${countryId}`);
-      const data = await res.json();
+      const data = await getCities(id, countryId);
       setCities(data);
     };
     fetchData();
