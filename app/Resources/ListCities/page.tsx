@@ -1,4 +1,4 @@
-import { City } from "../config/types";
+import { City } from "../../config/types";
 import { getCities } from "./actions";
 
 export default async function ListCities() {

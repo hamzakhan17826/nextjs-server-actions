@@ -1,6 +1,6 @@
 "use server";
 
-import { City } from "../config/types";
+import { City } from "../../config/types";
 
 export async function getCities(
   id: number,

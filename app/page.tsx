@@ -1,6 +1,6 @@
-import ListCities from "./cities/page";
-import ProductsPage from "./products/page";
-import RegisterPage from "./register/page";
+import ListCities from "./Resources/ListCities/page";
+import ProductsPage from "./Products/page";
+import RegisterPage from "./Account/Register/page";
 
 export default function Home() {
   return (
