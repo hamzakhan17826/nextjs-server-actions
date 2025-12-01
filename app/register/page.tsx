@@ -4,8 +4,8 @@ import { registerUser } from "./actions";
 
 export default function RegisterPage() {
   return (
-    <div className="p-6">
-      <h1>Register</h1>
+    <div className="mb-5">
+      <h1>/Account/Register</h1>
       <form action={registerUser} className="space-y-4">
         <input
           type="text"

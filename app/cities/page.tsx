@@ -1,38 +1,17 @@
-"use client";
-import { useEffect, useState } from "react";
+import { City } from "../config/types";
 import { getCities } from "./actions";
 
-const ListCities = () => {
-  type City = {
-    id: number;
-    countryId: number;
-    country: { id: number; name: string };
-    name: string;
-  };
-  const [cities, setCities] = useState<City[]>([]);
+export default async function ListCities() {
+  const data: City[] = await getCities(1, 1);
 
-  const id = 1;
-  const countryId = 1;
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getCities(id, countryId);
-      setCities(data);
-    };
-    fetchData();
-  }, []);
   return (
-    <>
-      <div className="text-2xl font-bold">/Resources/ListCities</div>
-      {cities.map((city) => (
-        <div key={city.id}>
-          Country: {city.country.name}
-          <br />
-          City: {city.name}
+    <div className="mb-5">
+      <h1>/Account/Cities</h1>
+      {data.map((item) => (
+        <div key={item.id}>
+          {item.country.name} - {item.name}
         </div>
       ))}
-      <br />
-    </>
+    </div>
   );
-};
-
-export default ListCities;
+}
