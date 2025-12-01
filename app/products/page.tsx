@@ -1,9 +1,5 @@
-import {
-  getProducts,
-  addProduct,
-  deleteProduct,
-  updateProduct,
-} from "./actions";
+import { getProducts, addProduct } from "./actions";
+import ProductList from "./ProductList";
 
 export default async function ProductsPage() {
   const products = await getProducts();
@@ -15,13 +11,13 @@ export default async function ProductsPage() {
           type="text"
           name="name"
           placeholder="Product name"
-          className="border rounded-lg p-2 w-1/12"
+          className="border rounded-lg p-2 w-1/12 bg-white"
         />
         <input
           type="number"
           name="price"
           placeholder="Product price"
-          className="border rounded-lg p-2 w-1/12"
+          className="border rounded-lg p-2 w-1/12 bg-white"
         />
         <button
           type="submit"
@@ -45,34 +41,7 @@ export default async function ProductsPage() {
           <th className="px-6 py-3 font-bold">Actions</th>
         </thead>
         <tbody>
-          {products.map((p) => (
-            <tr key={p.id} className="border-b border-default">
-              <td className="px-6 py-4">{p.id}</td>
-              <td className="px-6 py-4">{p.name}</td>
-              <td className="px-6 py-4">{p.price}</td>
-              <td className="px-6 py-4">
-                <form action={deleteProduct}>
-                  <input type="hidden" name="id" value={p.id} />
-                  <button className="px-2 py-1 rounded-lg bg-red-200 border border-red-900 justify-center cursor-pointer">
-                    Delete
-                  </button>
-                </form>
-              </td>
-              <td>
-                <details>
-                  <summary>Edit</summary>
-                  <form action={updateProduct}>
-                    <input type="hidden" name="id" value={p.id} />
-                    <input type="text" name="name" defaultValue={p.name} />
-                    <input type="text" name="price" defaultValue={p.price} />
-                    <button className="px-2 py-1 rounded-lg bg-green-200 border border-green-900 justify-center cursor-pointer">
-                      Update
-                    </button>
-                  </form>
-                </details>
-              </td>
-            </tr>
-          ))}
+          <ProductList products={products} />
         </tbody>
       </table>
     </div>
