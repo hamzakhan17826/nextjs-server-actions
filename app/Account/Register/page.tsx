@@ -1,5 +1,3 @@
-"use client";
-
 import { registerUser } from "./actions";
 
 export default function RegisterPage() {
