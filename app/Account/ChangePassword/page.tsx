@@ -1,20 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { loginUser } from "./actions";
+import { changePassword } from "./actions";
 
-export default function LoginPage() {
+export default function ChangePasswordPage() {
   const [message, setMessage] = useState("");
-
-  const [desktopId] = useState<string>(() =>
-    typeof window !== "undefined" ? localStorage.getItem("desktopId") ?? "" : ""
-  );
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
     try {
-      const response = await loginUser(formData);
+      const response = await changePassword(formData);
       setMessage(response.message);
     } catch (err) {
       setMessage((err as Error).message);
@@ -23,27 +19,34 @@ export default function LoginPage() {
 
   return (
     <div className="w-1/4 mb-5">
-      <h1>/Account/Login</h1>
+      <h1>/Account/ChangePassword</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
-          name="userName"
-          placeholder="Username"
+          name="oldPassword"
+          type="password"
+          placeholder="Old Password"
           className="border p-2 w-full rounded-lg bg-white"
         />
 
         <input
-          name="password"
+          name="newPassword"
           type="password"
-          placeholder="Password"
+          placeholder="New Password"
           className="border p-2 w-full rounded-lg bg-white"
         />
 
-        <input type="hidden" name="desktopId" value={desktopId} />
+        <input
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirm New Password"
+          className="border p-2 w-full rounded-lg bg-white"
+        />
+
         <button type="submit" className="bg-black text-white px-4 py-2 rounded">
-          Login
+          Change Password
         </button>
       </form>
-      <p className="mt-3">{message}</p>
+      <p>{message}</p>
     </div>
   );
 }

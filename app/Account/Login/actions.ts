@@ -4,7 +4,7 @@ export async function loginUser(formData: FormData) {
   const body = {
     userName: formData.get("userName"),
     password: formData.get("password"),
-    desktopId: 
+    desktopId: formData.get("desktopId"),
   };
 
   const res = await fetch("https://test.scrapcarfast.com/Account/Login", {
@@ -16,7 +16,6 @@ export async function loginUser(formData: FormData) {
   });
 
   if (!res.ok) {
-    console.log("API error", res.status);
     console.error("Error:", await res.text());
     throw new Error("Failed to login user");
   }
