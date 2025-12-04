@@ -15,6 +15,7 @@ export default function LoginPage() {
     const formData = new FormData(event.target as HTMLFormElement);
     try {
       const response = await loginUser(formData);
+      localStorage.setItem("token", response.token);
       setMessage(response.message);
     } catch (err) {
       setMessage((err as Error).message);

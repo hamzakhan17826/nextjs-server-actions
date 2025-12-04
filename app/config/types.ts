@@ -1,3 +1,8 @@
+export type Countries = {
+  id: number;
+  name: string;
+};
+
 export type City = {
   id: number;
   countryId: number;

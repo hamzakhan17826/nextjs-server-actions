@@ -14,8 +14,13 @@ export async function getProducts() {
 
 export async function addProduct(formData: FormData) {
   const name = formData.get("name") as string;
-  const price = Number(formData.get("price"));
+  const priceStr = formData.get("price") as string;
 
+  if (!name || !priceStr || isNaN(Number(priceStr))) {
+    throw new Error("Invalid product data");
+  }
+
+  const price = Number(priceStr);
   const newProduct = {
     id: Date.now(),
     name,

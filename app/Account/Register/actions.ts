@@ -1,6 +1,4 @@
 "use server";
-import { cookies } from "next/headers";
-
 export async function registerUser(formData: FormData) {
   const body = {
     email: formData.get("email"),
@@ -26,12 +24,6 @@ export async function registerUser(formData: FormData) {
   }
 
   const response = await res.json();
-  (await cookies()).set({
-    name: "desktopId",
-    value: String(response.desktopId),
-    httpOnly: false, // make true if you don't need JS access
-    path: "/",
-  });
   console.log("API response", response);
 
   return response;

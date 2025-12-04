@@ -1,17 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { registerUser } from "./actions";
+import { createUser } from "./actions";
 
-export default function RegisterPage() {
+export default function CreateUserPage() {
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
+    const token = localStorage.getItem("token") || "";
     try {
-      const response = await registerUser(formData);
-      localStorage.setItem("desktopId", response.desktopId);
+      const response = await createUser(formData, token);
+      localStorage.setItem("userId", response.userID);
       setMessage(response.message);
     } catch (err) {
       setMessage((err as Error).message);
@@ -19,14 +20,8 @@ export default function RegisterPage() {
   };
   return (
     <div className="w-1/4 mb-5">
-      <h1>/Account/Register</h1>
+      <h1>/Account/CreateUser</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          className="border p-2 w-full rounded-lg bg-white"
-        />
         <input
           name="userName"
           placeholder="Username"
@@ -47,19 +42,6 @@ export default function RegisterPage() {
           className="border p-2 w-full rounded-lg bg-white"
         />
 
-        <input
-          name="countryId"
-          type="number"
-          placeholder="Country ID"
-          className="border p-2 w-full rounded-lg bg-white"
-        />
-
-        <input
-          name="cityId"
-          type="number"
-          placeholder="City ID"
-          className="border p-2 w-full rounded-lg bg-white"
-        />
         <button type="submit" className="bg-black text-white px-4 py-2 rounded">
           Register
         </button>
