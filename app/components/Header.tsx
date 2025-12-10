@@ -12,14 +12,14 @@ const Header = () => {
               <a href="index.html">
                 <Image
                   className="logo-default"
-                  src={"../images/logo@2x.png"}
+                  src="/images/logo@2x.png"
                   alt="Canvas Logo"
                   width={100}
                   height={50}
                 />
                 <Image
                   className="logo-dark"
-                  src="../images/logo-dark@2x.png"
+                  src="/images/logo-dark@2x.png"
                   alt="Canvas Logo"
                   width={100}
                   height={50}
@@ -53,8 +53,10 @@ const Header = () => {
                       <div className="top-cart-item-image">
                         <a href="#">
                           <Image
-                            src="../images/shop/small/1.jpg"
+                            src="/images/shop/small/1.jpg"
                             alt="Blue Round-Neck Tshirt"
+                            width={100}
+                            height={100}
                           />
                         </a>
                       </div>
@@ -72,8 +74,10 @@ const Header = () => {
                       <div className="top-cart-item-image">
                         <a href="#">
                           <Image
-                            src="../images/shop/small/6.jpg"
+                            src="/images/shop/small/6.jpg"
                             alt="Light Blue Denim Dress"
+                            width={100}
+                            height={100}
                           />
                         </a>
                       </div>
@@ -3566,7 +3570,7 @@ const Header = () => {
                 type="text"
                 name="q"
                 className="form-control"
-                defaultValue
+                defaultValue=""
                 placeholder="Type & Hit Enter.."
                 autoComplete="off"
               />
