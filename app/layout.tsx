@@ -22,8 +22,8 @@ export default function RootLayout({
           <Header />
           {children}
         </div>
-        <Script src="/js/plugins.min.js" />
-        <Script src="/js/functions.bundle.js" />
+        {/* <Script src="/js/plugins.min.js" strategy="beforeInteractive" /> */}
+        {/* <Script src="/js/functions.bundle.js" strategy="beforeInteractive" /> */}
       </body>
     </html>
   );
