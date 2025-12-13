@@ -1,7 +1,7 @@
 "use server";
 
 export async function changePassword(formData: FormData, token: string) {
-  console.log(formData, token);
+  // console.log(formData, token);
   const body = {
     oldPassword: formData.get("oldPassword"),
     newPassword: formData.get("newPassword"),
@@ -21,7 +21,7 @@ export async function changePassword(formData: FormData, token: string) {
   );
 
   const response = await res.json();
-  console.log("API response", response);
+  // console.log("API response", response);
 
   if (!res.ok) {
     const errorMessage = response.errors || "Failed to change password";

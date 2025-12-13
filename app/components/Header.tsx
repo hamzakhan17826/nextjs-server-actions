@@ -1,7 +1,5 @@
 "use client";
 import Image from "next/image";
-import Script from "next/script";
-// import { useEffect } from "react";
 
 // Agar aapke template mein 'SEMICOLON' object hai to usko declare karein
 declare global {
@@ -15,41 +13,8 @@ declare global {
 }
 
 const Header = () => {
-  const initializeCanvasModules = () => {
-    if (typeof window.SEMICOLON?.Modules?.init === "function") {
-      window.SEMICOLON.Modules.init();
-      console.log("Canvas Modules Initialized!");
-    } else {
-      console.error(
-        "SEMICOLON.Modules.init function not found after script load."
-      );
-    }
-  };
-
-  // useEffect(() => {
-  //   initializeCanvasModules();
-  // }, []);
-
   return (
     <>
-      {/* Step 1: Pehle 'plugins.min.js' ko load karein */}
-      <Script
-        src="/js/plugins.min.js"
-        strategy="beforeInteractive"
-        onLoad={() => {
-          // Iske load hone ke baad, foran modules ko initialize karein
-          // Kyunke functions.bundle.js abhi load nahi hua, isko yahan call nahi karna
-          console.log("plugins.min.js loaded.");
-        }}
-      />
-
-      {/* Step 2: Phir 'functions.bundle.js' ko load karein. */}
-      {/* Isko 'lazyOnload' strategy dein taake yeh foran load na ho */}
-      <Script
-        src="/js/functions.bundle.js"
-        strategy="lazyOnload" // lazyOnload istemal karein
-        onLoad={initializeCanvasModules} // Jab yeh load ho jaye, tab modules initialize karein
-      />
       <header id="header" className="full-header">
         <div id="header-wrap">
           <div className="container">

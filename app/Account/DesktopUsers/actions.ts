@@ -31,7 +31,7 @@ export async function desktopUsers(formData: FormData, token: string) {
       throw new Error(errorMessage);
     }
 
-    console.log("API response", response);
+    // console.log("API response", response);
     return response;
   } catch (err) {
     console.error("Fetch failed:", err);

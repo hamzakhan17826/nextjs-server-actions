@@ -10,7 +10,7 @@ export default function ListCountries() {
     const fetchData = async () => {
       const data: Countries[] = await getCountries(1, "USA");
       setCountries(data);
-      console.log(data);
+      // console.log(data);
     };
     fetchData();
   }, []);

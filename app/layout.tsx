@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./css/style.css";
 import "./css/font-icons.css";
 import "./css/custom.css";
 import Header from "./components/Header";
+import CanvasScripts from "./components/CanvasScripts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,8 +22,8 @@ export default function RootLayout({
           <Header />
           {children}
         </div>
-        {/* <Script src="/js/plugins.min.js" strategy="beforeInteractive" /> */}
-        {/* <Script src="/js/functions.bundle.js" strategy="beforeInteractive" /> */}
+
+        <CanvasScripts />
       </body>
     </html>
   );

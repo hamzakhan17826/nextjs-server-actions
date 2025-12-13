@@ -18,13 +18,13 @@ export async function registerUser(formData: FormData) {
   });
 
   if (!res.ok) {
-    console.log("API error", res.status);
+    // console.log("API error", res.status);
     console.error("Error:", await res.text());
     throw new Error("Failed to register user");
   }
 
   const response = await res.json();
-  console.log("API response", response);
+  // console.log("API response", response);
 
   return response;
 }

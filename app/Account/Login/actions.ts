@@ -21,7 +21,7 @@ export async function loginUser(formData: FormData) {
   }
 
   const response = await res.json();
-  console.log("API response", response);
+  // console.log("API response", response);
 
   return response;
 }
